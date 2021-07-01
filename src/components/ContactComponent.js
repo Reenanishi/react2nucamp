@@ -1,5 +1,5 @@
-import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import React, { Component } from 'react';
+import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col  } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Contact extends Component {
@@ -16,7 +16,7 @@ class Contact extends Component {
             contactType: 'By Phone',
             feedback: ''
         };
-
+        
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -37,8 +37,6 @@ class Contact extends Component {
         event.preventDefault();
     }
 
-
-
     render() {
         return (
             <div className="container">
@@ -52,8 +50,7 @@ class Contact extends Component {
                         <hr />
                     </div>
                 </div>
-
-                <div className="row row-content align-items-center">
+                    <div className="row row-content align-items-center">
                     <div className="col-sm-4">
                         <h5>Our Address</h5>
                         <address>
@@ -66,9 +63,8 @@ class Contact extends Component {
                         <a role="button" className="btn btn-link" href="tel:+12065551234"><i className="fa fa-phone" /> 1-206-555-1234</a><br />
                         <a role="button" className="btn btn-link" href="mailto:fakeemail@fakeemail.co"><i className="fa fa-envelope-o" /> campsites@nucamp.co</a>
                     </div>
-                </div>
-
-                <div className="row row-content">
+                    </div>
+                    <div className="row row-content">
                     <div className="col-12">
                         <h2>Send us your Feedback</h2>
                         <hr />
@@ -91,7 +87,7 @@ class Contact extends Component {
                                         placeholder="Last Name"
                                         value={this.state.lastName}
                                         onChange={this.handleInputChange} />
-                                </Col>
+                                </Col>                        
                             </FormGroup>
                             <FormGroup row>
                                 <Label htmlFor="phoneNum" md={2}>Phone</Label>
@@ -112,7 +108,7 @@ class Contact extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Col md={{ size: 4, offset: 2 }}>
+                                <Col md={{size: 4, offset: 2}}>
                                     <FormGroup check>
                                         <Label check>
                                             <Input type="checkbox"
@@ -125,8 +121,8 @@ class Contact extends Component {
                                 </Col>
                                 <Col md={4}>
                                     <Input type="select" name="contactType"
-                                        value={this.state.contactType}
-                                        onChange={this.handleInputChange}>
+                                            value={this.state.contactType}
+                                            onChange={this.handleInputChange}>
                                         <option>By Phone</option>
                                         <option>By Email</option>
                                     </Input>
@@ -142,7 +138,7 @@ class Contact extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Col md={{ size: 10, offset: 2 }}>
+                                <Col md={{size: 10, offset: 2}}>
                                     <Button type="submit" color="primary">
                                         Send Feedback
                                     </Button>
@@ -152,12 +148,9 @@ class Contact extends Component {
                     </div>
                 </div>
             </div>
+        
         );
     }
 }
 
 export default Contact;
-
-
-
-
