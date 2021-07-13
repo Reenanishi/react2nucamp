@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button,  Label, Input, Col, Row  } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
@@ -31,13 +31,14 @@ class Contact extends Component {
             }
         };
 
-        
+
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        // console.log('Current State is: ' + JSON.stringify(values));
+        // alert('Current State is: ' + JSON.stringify(values));
+        this.props.postFeedback(values);
         this.props.resetFeedbackForm();
     }
 
@@ -77,7 +78,7 @@ class Contact extends Component {
                         <hr />
                     </div>
                     <div className="col-md-10">
-                    <Form model="feedbackForm" onSubmit={values => this.handleSubmit(values)}>  
+                        <Form model="feedbackForm" onSubmit={values => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstName" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -85,7 +86,7 @@ class Contact extends Component {
                                         placeholder="First Name"
                                         className="form-control"
                                         validators={{
-                                            required, 
+                                            required,
                                             minLength: minLength(2),
                                             maxLength: maxLength(15)
                                         }}
@@ -101,8 +102,8 @@ class Contact extends Component {
                                             maxLength: 'Must be 15 characters or less'
                                         }}
                                     />
-                            
-                            </Col>
+
+                                </Col>
                             </Row>
                             <Row className="form-group">
                                 <Label htmlFor="lastName" md={2}>Last Name</Label>
@@ -179,9 +180,9 @@ class Contact extends Component {
                                     />
                                 </Col>
                             </Row>
-                            
+
                             <Row className="form-group">
-                                <Col md={{size: 4, offset: 2}}>
+                                <Col md={{ size: 4, offset: 2 }}>
                                     <div className="form-check">
                                         <Label check>
                                             <Control.checkbox
@@ -211,7 +212,7 @@ class Contact extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Col md={{size: 10, offset: 2}}>
+                                <Col md={{ size: 10, offset: 2 }}>
                                     <Button type="submit" color="primary">
                                         Send Feedback
                                     </Button>
@@ -225,6 +226,5 @@ class Contact extends Component {
         );
     }
 }
-
 
 export default Contact;
